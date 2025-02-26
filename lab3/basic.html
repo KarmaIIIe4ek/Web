@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактор JavaScript</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e9ecef;
+            color: #495057;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 800px; /* Ширина увеличена */
+            height: 250px; /* Высота увеличена */
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #ced4da;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px; /* Размер текста увеличен */
+            resize: vertical;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+
+        textarea:focus {
+            border-color: #6c757d;
+            outline: none;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            margin: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: fit-content;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        label {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="advanced.html"><button><h1>Перейти к расширенной версии</h1></button></a>
+        <br />
+        <label for="mycode">Введите скрипт:</label>
+        <textarea id="mycode" rows=10 cols=40 placeholder="Введите ваш JavaScript код здесь...">
+const matr = [];
+let num = 1;
+const rows = parseInt(prompt("Введите количество строк в матрице:"));
+const columns = parseInt(prompt("Введите количество столбцов в матрице:"));
+for (let i = 0; i < rows; i++) {
+  const row = [];
+  for (let j = 0; j < columns; j++) {
+    row.push(
+      parseInt(prompt("Введите значение элемента a[" + i + "][" + j + "]"))
+    );
+  }
+  matr.push(row);
+}
+const n = parseInt(prompt("Введите строку:"));
+const z = parseInt(prompt("Введи множитель:"));
+const m = parseInt(prompt("Введи строку для суммирования:"));
+for (let i = 0; i < columns; i++) {
+  matr[m][i] += matr[n][i] * z;
+}
+let output = "";
+for (let i = 0; i < rows; i++) {
+  output += matr[i].join("\t") + "\n";
+}
+document.getElementById("myrezult").value = output;
+output;
+        </textarea>
+        <br />
+        <label for="myrezult">Результат:</label>
+        <textarea id="myrezult" rows=10 cols=40 readonly></textarea>
+        <br />
+
+        <button onclick="document.getElementById('myrezult').value =
+    eval(document.getElementById('mycode').value)">
+            Выполнить
+        </button>
+        <button onclick="document.getElementById('mycode').value='';
+    document.getElementById('myrezult').value=''"> Очистить
+        </button>
+    </div>
+   
+</body>
+
+</html>
