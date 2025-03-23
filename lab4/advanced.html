@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактор JavaScript</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e9ecef;
+            color: #495057;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 800px; /* Ширина увеличена */
+            height: 370px; /* Высота увеличена */
+            margin: 0px;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #ced4da;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px; /* Размер текста увеличен */
+            resize: vertical;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+
+        textarea:focus {
+            border-color: #6c757d;
+            outline: none;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            margin: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: fit-content;
+            max-width: 90%;
+            text-align: center;
+        }
+
+        canvas {
+            border: 2px solid #ced4da;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 10px;
+            vertical-align: top;
+        }
+
+        label {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .task-image {
+            margin-top: 20px;
+            border: 2px solid #ced4da;
+            border-radius: 8px;
+            max-width: 100%;
+        }
+    </style>
+    <script>
+        function clear_holst() {
+            var canvas = document.getElementById("drawingCanvas");
+            var context = canvas.getContext("2d");
+            context.clearRect(0, 0, canvas.width, canvas.height);
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <a href="basic.html"><button><h1>Перейти к базовой версии</h1></button></a>
+        <br />
+        <table>
+            <tr>
+                <td>
+                    <label for="mycode">Введите текст программы на JavaScript:</label>
+                    <textarea id="mycode" rows=20 cols=100 placeholder="Введите ваш JavaScript код здесь...">
+var canvas = document.getElementById("drawingCanvas");
+var ctx = canvas.getContext("2d");
+ctx.clearRect(0, 0, 600, 600);
+for (let i = 1; i <= 6; i++) {
+  for (let j = 10; j >= 1; j--) {
+    let numRectangles;
+    if (i % 2 === 1) {
+      numRectangles = 10;
+    } else {
+      numRectangles = 5;
+    }
+    if ((10 - j) < numRectangles) {
+      if ((j - i % 2) % 2 === 1) {
+        ctx.strokeStyle = "#8d6";
+        ctx.fillStyle = "#8d6";
+      }
+      else {
+        ctx.strokeStyle = "#44f";
+        ctx.fillStyle = "#44f";
+      }
+      ctx.strokeRect(j * 50, i * 50, 20, 20);
+      ctx.fillRect(j * 50, i * 50, 20, 20);
+    }
+  }
+}
+                    </textarea>
+                </td>
+                <td>
+                    <label>Отображение рисунка:</label>
+                    <canvas id="drawingCanvas" width="600" height="400">Ваш браузер не поддерживает canvas</canvas>
+                </td>
+            </tr>
+        </table>
+        <br />
+        <button onclick="eval(document.getElementById('mycode').value)">
+            Отобразить рисунок
+        </button>
+        <button onclick="clear_holst()">Очистить холст</button>
+        <!-- Блок с заданием по варианту -->
+        <div class="task-section">
+            <h2>Задание по варианту</h2>
+            <img src="images/advanced_v12.png" alt="Задание по варианту" class="task-image">
+        </div>
+    </div>
+
+    
+</body>
+
+</html>

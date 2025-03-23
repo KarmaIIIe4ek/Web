@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Области применения языка программирования Go" />
+    <meta name="keywords" content="Golang, Go, программирование, веб-серверы, микросервисы" />
+    <title>Области применения Golang</title>
+    <link rel="shortcut icon" href="images/goLogo.png" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script type="text/javascript">
+        // Анонимная функция для отображения времени
+        window.onload = function () {
+            // Функция для обновления времени
+            function updateTime() {
+                var date = new Date();
+                var hours = date.getHours();
+                var minutes = date.getMinutes();
+                var seconds = date.getSeconds();
+
+                // Добавляем ведущие нули, если необходимо
+                hours = (hours < 10) ? "0" + hours : hours;
+                minutes = (minutes < 10) ? "0" + minutes : minutes;
+                seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+                // Формируем строку времени
+                var timeString = " _" + hours + ":" + minutes + ":" + seconds;
+
+                // Получаем элемент по имени
+                var timeElements = document.getElementsByName("currentTime");
+                if (timeElements.length > 0) {
+                    timeElements[0].innerText = timeString;
+                }
+            }
+
+            // Обновляем время каждую секунду
+            setInterval(updateTime, 1000);
+
+            // Вызываем функцию сразу после загрузки страницы
+            updateTime();
+            
+            // Добавляем обработчик события keydown
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Enter') {
+                    alert('Вы нажали Enter!');
+                }
+            });
+        };
+
+        // Функция для вывода информации об авторе
+        function showAuthorInfo() {
+            alert("Автор сайта: Юрагин Н.В., группа:4232, Вариант 29");
+        }
+
+        // Функция для добавления пустой строки в таблицу
+        function addEmptyRow() {
+            var table = document.getElementsByName("exampleTable")[0]; // Ищем таблицу по name
+            var newRow = table.insertRow(table.rows.length);
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            cell1.innerHTML = "";
+            cell2.innerHTML = "";
+        }
+
+        // Функция для изменения цвета заголовка на случайный
+        function changeHeaderColor() {
+            var headers = document.getElementsByName("header"); // Ищем элементы по name
+            for (var i = 0; i < headers.length; i++) {
+                headers[i].style.color = getRandomColor(); // Присваиваем случайный цвет
+            }
+        }
+
+        // Функция для генерации случайного HEX-цвета
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)]; // Генерируем случайный символ для цвета
+            }
+            return color;
+        }
+
+        // Функция для изменения размера логотипа
+        function changeLogoSize() {
+            var logo = document.getElementsByName("logo")[0]; // Ищем логотип по name
+            logo.style.width = '100px';
+        }
+
+        // Функция для добавления строки в таблицу с пользовательскими данными
+        function addRowWithData() {
+            var project = prompt("Введите название проекта:");
+            var description = prompt("Введите описание проекта:");
+            if (project && description) {
+                var table = document.getElementsByName("exampleTable")[0]; // Ищем таблицу по name
+                var newRow = table.insertRow(table.rows.length);
+                var cell1 = newRow.insertCell(0);
+                var cell2 = newRow.insertCell(1);
+                cell1.innerHTML = project;
+                cell2.innerHTML = description;
+            }
+        }
+
+        // Функция для удаления последней добавленной строки
+        function removeLastRow() {
+            var table = document.getElementsByName("exampleTable")[0]; // Ищем таблицу по name
+            if (table.rows.length > 2) {
+                table.deleteRow(table.rows.length - 1);
+            }
+        }
+
+        // Функция для добавления элемента в список
+        function addListItem() {
+            var itemText = prompt("Введите текст нового элемента списка:");
+            if (itemText) {
+                var dropdownMenu = document.getElementsByName("dropdownMenu")[0]; // Ищем список по name
+                var newItem = document.createElement('li');
+                newItem.innerHTML = `<a href="#">${itemText}</a>`;
+                dropdownMenu.appendChild(newItem);
+            }
+        }
+
+        // Функция для удаления последнего элемента списка
+        function removeLastListItem() {
+            var dropdownMenu = document.getElementsByName("dropdownMenu")[0]; // Ищем список по name
+            if (dropdownMenu.children.length > 0) {
+                dropdownMenu.removeChild(dropdownMenu.lastElementChild);
+            }
+        }
+
+        function changeStyle(element, color, fontSize) {
+            element.style.color = color;
+            element.style.fontSize = fontSize;
+        }
+    </script>
+</head>
+
+<body>
+    <header class="header">
+        <img src="images/goLogo.png" alt="Логотип Golang" height="50" class="header__logo" name="logo" />
+        <nav class="header__nav">
+            <ul class="header__nav-list">
+                <li class="header__nav-item"><a href="index.html">Главная</a></li>
+                <li class="header__nav-item"><a href="history.html">История создания</a></li>
+                <li class="header__nav-item"><a href="usage.html">Области применения</a></li>
+                <li class="header__nav-item"><a href="sources.html">Использованные источники</a></li>
+                <li class="header__nav-item"><a class="header__nav-text" href="basic.html">Скрипты JavaScript</a></li>
+            </ul>
+        </nav>
+        <p class="header__nav-item header__time" name="currentTime"></p>
+    </header>
+    <main>
+        <div class="dropdown">
+            <button class="dropdown-toggle">Компании использующие Golang</button>
+            <ul class="dropdown-menu" name="dropdownMenu">
+                <li><a href="#">Google</a></li>
+                <li><a href="#">Uber</a></li>
+                <li><a href="#">Dropbox</a></li>
+                <li><a href="#">Twitch</a></li>
+                <li><a href="#">Docker</a></li>
+                <li><a href="#">SoundCloud</a></li>
+                <li><a href="#">Cloudflare</a></li>
+            </ul>
+        </div>
+        <section>
+            <h2 name="header">Веб-серверы</h2>
+            <p>
+                Go часто используется для создания высокопроизводительных веб-серверов благодаря своей простоте и скорости.
+            </p>
+        </section>
+        <section>
+            <h2 name="header">Микросервисы</h2>
+            <p>
+                Go идеально подходит для разработки микросервисной архитектуры, где важны скорость и масштабируемость.
+            </p>
+        </section>
+        <section>
+            <h2 name="header">Системное ПО</h2>
+            <p>
+                Go используется для создания системного программного обеспечения, такого как Docker и Kubernetes.
+            </p>
+        </section>
+        <hr />
+        <h2>Примеры использования</h2>
+        <table border="1" cellpadding="10" cellspacing="0" name="exampleTable">
+            <thead>
+                <tr>
+                    <th>Проект</th>
+                    <th>Описание</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Docker</td>
+                    <td>Платформа для контейнеризации приложений.</td>
+                </tr>
+                <tr>
+                    <td>Kubernetes</td>
+                    <td>Система оркестрации контейнеров.</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr />
+        <button class="button" onclick="showAuthorInfo()">Показать информацию об авторе</button>
+        <button class="button" onclick="addListItem()">Добавить элемент в список</button>
+        <button class="button" onclick="removeLastListItem()">Удалить последний элемент списка</button>
+        <button class="button" onclick="addEmptyRow()">Добавить пустую строку в таблицу</button>
+        <button class="button" onclick="changeHeaderColor()">Изменить цвет заголовка</button>
+        <button class="button" onclick="changeStyle(document.getElementsByName('header')[0], 'red', '24px')">Изменить стиль элемента</button>
+        <button class="button" onclick="changeLogoSize()">Изменить размер логотипа</button>
+        <button class="button" onclick="addRowWithData()">Добавить строку с данными</button>
+        <button class="button" onclick="removeLastRow()">Удалить последнюю строку</button>
+    </main>
+    <footer>
+        <address>
+            <a>Вариант 29, Юрагин Н.В.</a>
+            <a href="tel:+76666666666">+7(666)-666-66-66</a>
+            <a href="mailto:nikitayuragin@vk.com">nikitayuragin@vk.com</a>
+        </address>
+    </footer>
+</body>
+
+</html>
