@@ -1,7 +1,7 @@
 # Web Development Labs Repository
 
 ## Overview
-This repository contains the laboratory works of **Nikita Yuragin**, a student specializing in **Web Development**. The labs cover various aspects of web development, including HTML, CSS, JavaScript, and modern web technologies. Each lab is designed to enhance practical skills and understanding of web development concepts.
+This repository contains the laboratory works of **Nikita Yuragin**, a student specializing in **Web Development**. The labs cover various aspects of web development, including HTML, CSS, JavaScript, PHP, Python, MySQL, Appache, JQuery and modern web technologies. Each lab is designed to enhance practical skills and understanding of web development concepts.
 
 ## Структура репозитория
 
