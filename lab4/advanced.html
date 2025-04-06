@@ -24,14 +24,14 @@
         }
 
         textarea {
-            width: 800px; /* Ширина увеличена */
-            height: 370px; /* Высота увеличена */
+            width: 800px;
+            height: 370px;
             margin: 0px;
             padding: 15px;
             border-radius: 8px;
             border: 2px solid #ced4da;
             font-family: 'Courier New', Courier, monospace;
-            font-size: 16px; /* Размер текста увеличен */
+            font-size: 16px;
             resize: vertical;
             background-color: #f8f9fa;
             color: #212529;
@@ -102,6 +102,26 @@
             border-radius: 8px;
             max-width: 100%;
         }
+
+        .input-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .input-field {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .input-field input {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ced4da;
+            width: 60px;
+        }
     </style>
     <script>
         function clear_holst() {
@@ -109,30 +129,23 @@
             var context = canvas.getContext("2d");
             context.clearRect(0, 0, canvas.width, canvas.height);
         }
-    </script>
-</head>
 
-<body>
-    <div class="container">
-        <a href="basic.html"><button><h1>Перейти к базовой версии</h1></button></a>
-        <br />
-        <table>
-            <tr>
-                <td>
-                    <label for="mycode">Введите текст программы на JavaScript:</label>
-                    <textarea id="mycode" rows=20 cols=100 placeholder="Введите ваш JavaScript код здесь...">
-var canvas = document.getElementById("drawingCanvas");
+        function updateCode() {
+            const rows = document.getElementById('rowsInput').value;
+            const cols = document.getElementById('colsInput').value;
+            
+            const code = `var canvas = document.getElementById("drawingCanvas");
 var ctx = canvas.getContext("2d");
 ctx.clearRect(0, 0, 600, 600);
-for (let i = 1; i <= 6; i++) {
-  for (let j = 10; j >= 1; j--) {
+for (let i = 1; i <= ${rows}; i++) {
+  for (let j = ${cols}; j >= 1; j--) {
     let numRectangles;
     if (i % 2 === 1) {
-      numRectangles = 10;
+      numRectangles = ${cols};
     } else {
-      numRectangles = 5;
+      numRectangles = ${Math.floor(cols/2)};
     }
-    if ((10 - j) < numRectangles) {
+    if ((${cols} - j) < numRectangles) {
       if ((j - i % 2) % 2 === 1) {
         ctx.strokeStyle = "#8d6";
         ctx.fillStyle = "#8d6";
@@ -141,11 +154,39 @@ for (let i = 1; i <= 6; i++) {
         ctx.strokeStyle = "#44f";
         ctx.fillStyle = "#44f";
       }
-      ctx.strokeRect(j * 50, i * 50, 20, 20);
-      ctx.fillRect(j * 50, i * 50, 20, 20);
+      ctx.strokeRect(j * 30, i * 30, 10, 10);
+      ctx.fillRect(j * 30, i * 30, 10, 10);
     }
   }
-}
+}`;
+            
+            document.getElementById('mycode').value = code;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <a href="basic.html"><button><h1>Перейти к базовой версии</h1></button></a>
+        <br />
+        
+        <div class="input-group">
+            <div class="input-field">
+                <label for="rowsInput">Количество строк (i):</label>
+                <input type="number" id="rowsInput" min="1" max="12" value="12" onchange="updateCode()">
+            </div>
+            <div class="input-field">
+                <label for="colsInput">Количество столбцов (j):</label>
+                <input type="number" id="colsInput" min="1" max="19" value="19" onchange="updateCode()">
+            </div>
+        </div>
+        
+        <table>
+            <tr>
+                <td>
+                    <label for="mycode">Введите текст программы на JavaScript:</label>
+                    <textarea id="mycode" rows=20 cols=100 placeholder="Введите ваш JavaScript код здесь...">
+
                     </textarea>
                 </td>
                 <td>
@@ -166,7 +207,10 @@ for (let i = 1; i <= 6; i++) {
         </div>
     </div>
 
-    
+    <script>
+        // Инициализация кода при загрузке
+        updateCode();
+    </script>
 </body>
 
 </html>

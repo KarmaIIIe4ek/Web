@@ -106,8 +106,7 @@ let output = "Полученная матрица:\n";
 for (let i = 0; i < rows; i++) {
   output += matr[i].join("\t") + "\n";
 }
-
-output;
+output === "Полученная матрица:\n" ? "Введены некорректные значения" : output;
         </textarea>
         <br />
         <label for="myrezult">Результат:</label>

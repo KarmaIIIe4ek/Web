@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Области применения языка программирования Go" />
+    <meta name="keywords" content="Golang, Go, программирование, веб-серверы, микросервисы" />
+    <title>Использованные источники</title>
+    <link rel="shortcut icon" href="images/goLogo.png" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script type="text/javascript">
+        // Анонимная функция для отображения времени
+        window.onload = function() {
+            // Функция для обновления времени
+            function updateTime() {
+                var date = new Date();
+                var hours = date.getHours();
+                var minutes = date.getMinutes();
+                var seconds = date.getSeconds();
+
+                // Добавляем ведущие нули, если необходимо
+                hours = (hours < 10) ? "0" + hours : hours;
+                minutes = (minutes < 10) ? "0" + minutes : minutes;
+                seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+                // Формируем строку времени
+                var timeString = " _" + hours + ":" + minutes + ":" + seconds;
+
+                // Получаем элемент по имени
+                var timeElements = document.getElementsByName("currentTime");
+                if (timeElements.length > 0) {
+                    timeElements[0].innerText = timeString;
+                }
+            }
+
+            // Обновляем время каждую секунду
+            setInterval(updateTime, 1000);
+
+            // Вызываем функцию сразу после загрузки страницы
+            updateTime();
+        };
+    </script>
+</head>
+
+<body>
+    <header class="header">
+        <img src="images/goLogo.png" alt="Логотип Golang" height="50" class="header__logo" />
+        <nav class="header__nav">
+            <ul class="header__nav-list">
+                <li class="header__nav-item"><a class="header__nav-text" href="index.html">Главная</a></li>
+                <li class="header__nav-item"><a class="header__nav-text" href="history.html">История создания</a></li>
+                <li class="header__nav-item"><a class="header__nav-text" href="usage.html">Области применения</a></li>
+                <li class="header__nav-item"><a class="header__nav-text" href="sources.html">Использованные источники</a></li>
+                <li class="header__nav-item"><a class="header__nav-text" href="basic.html">Скрипты JavaScript</a></li>
+                <li class="header__nav-item"><a class="header__nav-text" href="http://localhost:5500/lab5_server/forma.htm">Анкета</a></li>
+            </ul>
+        </nav>
+        <p class="header__nav-item header__time" name="currentTime"></p>
+    </header>
+    <main>
+        
+        <ul class="sources-list">
+            <li class="sources-item">
+                <img src="images/source_logo_golang.png" alt="Логотип Golang" class="source-logo">
+                <a href="https://golang.org/" class="sources-link">Официальный сайт Golang</a>
+            </li>
+            <li class="sources-item">
+                <a href="https://ru.wikipedia.org/wiki/Go" class="sources-link">Wikipedia: Go</a>
+                <img src="images/source_logo_wiki.png" alt="Логотип Wikipedia" class="source-logo sources-logo-wiki">
+            </li>
+            <li class="sources-item">
+                <img src="images/source_logo_habr.png" alt="Логотип Habr" class="source-logo">
+                <a href="https://habr.com/ru/hub/go/" class="sources-link">Статьи на Habr о Go</a>
+            </li>
+        </ul>
+    </main>
+    <footer>
+        <address>
+            <a>Вариант 29, Юрагин Н.В.</a>
+            <a href="tel:+76666666666">+7(666)-666-66-66</a>
+            <a href="mailto:nikitayuragin@vk.com">nikitayuragin@vk.com</a>
+        </address>
+    </footer>
+</body>
+
+</html>
