@@ -11,7 +11,8 @@ This repository contains the laboratory works of **Nikita Yuragin**, a student s
 - **/lab4**: Пользовательские сценарии на JS
 - **/lab5**: Сервер со скриптом на Python
 - **/lab6**: Работа с базой данных (PHP+MySQL)
-- **/lab7**: Асинхронные запросы (AJAX и JSON)
+- **/golang_web_project**: Работа с базой данных (PHP+MySQL)
+- **/golang_web_project_7**: Асинхронные запросы (AJAX и JSON)
 - **/lab8**: 
 
 
